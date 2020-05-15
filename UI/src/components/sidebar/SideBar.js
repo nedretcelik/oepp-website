@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBriefcase, faPaperPlane, faQuestion, faImage, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBriefcase, faPaperPlane, faQuestion, faImage, faCopy, faThumbsUp, faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { NavItem, NavLink, Nav } from 'reactstrap';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
@@ -9,11 +9,15 @@ const SideBar = props => (
     <div className={classNames('sidebar', {'is-open': props.isOpen})}>
       <div className="sidebar-header">
         <span color="info" onClick={props.toggle} style={{color: '#fff'}}>&times;</span>
-       <h3>Oepp'i Keşfet</h3>
+        <h3>Oepp'i Keşfet</h3>
       </div>
       <div className="side-menu"  style={{backgroundColor: '#563d7c'}}>
         <Nav vertical className="list-unstyled pb-3"  >
-          <p>Kategoriler</p>
+          <NavItem>
+            <NavLink style={{color:'white'}} tag={Link} to={'/category'}>
+              <FontAwesomeIcon icon={faGamepad} className="mr-2"/>Kategoriler
+            </NavLink>
+          </NavItem>
           <NavItem>
             <NavLink style={{color:'white'}}  tag={Link} to={'/'}>
               <FontAwesomeIcon icon={faHome} className="mr-2"/>Anasayfa
@@ -24,7 +28,6 @@ const SideBar = props => (
               <FontAwesomeIcon icon={faBriefcase} className="mr-2"/>Hakkımızda
             </NavLink>
           </NavItem>
-         
           <NavItem>
             <NavLink style={{color:'white'}} tag={Link} to={'/Faq'}>
               <FontAwesomeIcon icon={faQuestion} className="mr-2"/>FAQ
@@ -33,6 +36,11 @@ const SideBar = props => (
           <NavItem>
             <NavLink  style={{color:'white'}} tag={Link} to={'/support'}>
               <FontAwesomeIcon icon={faPaperPlane} className="mr-2"/>Support
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink  style={{color:'white'}} tag={Link} to={'/feedback/list'}>
+              <FontAwesomeIcon icon={faThumbsUp} className="mr-2"/>Feedback List
             </NavLink>
           </NavItem>
         </Nav>        
@@ -58,11 +66,11 @@ const SideBar = props => (
     [
       {
         title: "Page 1",
-        target: "Page-1",          
+        target: "Login",          
       },
       {
         title: "Page 2",
-        target: "Page-2",        
+        target: "Registration",        
       },
       {
         title: "Page 3",
@@ -70,6 +78,5 @@ const SideBar = props => (
       }
     ]
   ]
-  
 
 export default SideBar;
